@@ -1,29 +1,23 @@
 const DOM = React.DOM;
 
-class Image extends React.Component {
-    render() {
-        return React.createElement('img',
-            {
-                src:    'http://fishki.net/picsw/092011/20/bonus/foto/049.jpg',
-                height: '230',
-                width:  '150',
-                alt:    'qwerty'
-            }
-        )
-    }
-};
+attrs = { src:    'http://fishki.net/picsw/092011/20/bonus/foto/049.jpg',
+          height: '230',
+          width:  '150',
+          alt:    'qwerty' };
 
-class TextBox extends React.Component{
-    render() {
-        return DOM.h3({}, 'sfvsf')
-    }
-}
+const Image = (props) => (
+    DOM.img(props)
+);
+
+const TextBox = ({text}) => (
+    DOM.h3( {}, text )
+);
 
 class BlogItem extends React.Component {
     render() {
         return React.createElement('div', {},
-               React.createElement(TextBox, {}),
-               React.createElement(Image, {}))
+               React.createElement(TextBox, {text: '123123'}),
+               React.createElement(Image, attrs))
     }
 };
 

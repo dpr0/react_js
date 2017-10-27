@@ -1,27 +1,15 @@
 const DOM = React.DOM;
 
-class ImageContainer extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return React.createElement(Image, {})
-    }
-}
+attrs = { src:    'http://fishki.net/picsw/092011/20/bonus/foto/049.jpg',
+          height: '230',
+          width:  '150',
+          alt:    'qwerty' };
 
-const Image = ( props ) => (
-    DOM.img(
-        {
-            src:    'http://fishki.net/picsw/092011/20/bonus/foto/049.jpg',
-            height: '230',
-            width:  '150',
-            alt:    'qwerty'
-        },
-        props.children
-    )
+const Image = (props) => (
+    DOM.img(props)
 );
 
 ReactDOM.render(
-    React.createElement(ImageContainer),
+    React.createElement(Image, attrs),
     document.getElementById('app')
 );
