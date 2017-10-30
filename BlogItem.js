@@ -3,13 +3,13 @@ const { bind, assign }   = _;
 const Image = props => DOM.img(props);
 moment.locale('ru');
 
-const TextBox = ({author, created_at, updated_at, text}) => (
+const TextBox = ({author, createdAt, updatedAt, text}) => (
     <div>
         <h3>{text}</h3>
         <ul>
-            <li><b>author:    </b> {author}    </li>
-            <li><b>created_at:</b> {created_at}</li>
-            <li><b>updated_at:</b> {updated_at}</li>
+            <li><b>author:   </b> {author}   </li>
+            <li><b>createdAt:</b> {createdAt}</li>
+            <li><b>updatedAt:</b> {updatedAt}</li>
         </ul>
     </div>
 );
@@ -55,8 +55,8 @@ class BlogItem extends React.Component {
         super(props);
         this.meta = {
             author:     'dpro',
-            created_at: moment('09-31-2017 11:11:11').format('DD.MM.YYYY, dddd, h:mm:ss'),
-            updated_at: moment().format('DD.MM.YYYY, dddd, h:mm:ss'),
+            createdAt:  moment('09-31-2017 11:11:11').format('DD.MM.YYYY, dddd, h:mm:ss'),
+            updatedAt:  moment().format('DD.MM.YYYY, dddd, h:mm:ss'),
             like:       11,
             dislike:    null, // значение не передано
             text:       '123123',
@@ -75,7 +75,7 @@ class BlogItem extends React.Component {
             React.createElement(Like,    this.meta),
             React.createElement(Image,   this.meta.image))
     }
-};
+}
 
 ReactDOM.render(
     React.createElement('div', {},
