@@ -1,36 +1,33 @@
 const { DOM, PropTypes } = React;
-const { bind, assign }   = _;
-const Image = props => DOM.img(props);
+const { bind, assign, map }   = _;
 moment.locale('ru');
+const Image = ({ src, height, width, alt }) => DOM.img({ src, height, width, alt });
+Image.defaultProps = {src: 'http://stormweb.pro/images/cms/data/raznoe/error_404.jpg', height: '168', width: '206', alt: '404'};
+Image.propTypes = {src: PropTypes.string, height: PropTypes.string, width: PropTypes.string, alt: PropTypes.string};
 
-const TextBox = ({author, createdAt, updatedAt, text}) => (
+const TextBox = ({meta, text}) => (
     <div>
         <h3>{text}</h3>
         <ul>
-            <li><b>author:   </b> {author}   </li>
-            <li><b>createdAt:</b> {createdAt}</li>
-            <li><b>updatedAt:</b> {updatedAt}</li>
+            <li><b>author:   </b> {meta.author}   </li>
+            <li><b>createdAt:</b> {meta.createdAt}</li>
+            <li><b>updatedAt:</b> {meta.updatedAt}</li>
         </ul>
     </div>
 );
-TextBox.defaultProps = {author: 'anonimus', text: 'empty'};
-TextBox.propTypes = {author: PropTypes.string, dislike: PropTypes.string};
-
+TextBox.defaultProps = {text: 'empty'};
+TextBox.propTypes = {meta: {author: PropTypes.string}, dislike: PropTypes.string};
 
 class Like extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { like: props.like, dislike: props.dislike };
-        this.likeClick = bind(this.likeClick, this);
+        this.state        = { like: props.like, dislike: props.dislike };
+        this.likeClick    = bind(this.likeClick,    this);
         this.dislikeClick = bind(this.dislikeClick, this);
     }
 
-    likeClick() {
-        this.setState({ like: this.state.like + 1 });
-    }
-    dislikeClick() {
-        this.setState({ dislike: this.state.dislike + 1 });
-    }
+    likeClick()    { this.setState({ like:    this.state.like    + 1 }) }
+    dislikeClick() { this.setState({ dislike: this.state.dislike + 1 }) }
 
     render() {
         return(
@@ -51,36 +48,68 @@ Like.defaultProps = {like: 0, dislike: 0};
 Like.propTypes = {like: PropTypes.number, dislike: PropTypes.number};
 
 class BlogItem extends React.Component {
-    constructor(props) {
-        super(props);
-        this.meta = {
-            author:     'dpro',
-            createdAt:  moment('09-31-2017 11:11:11').format('DD.MM.YYYY, dddd, h:mm:ss'),
-            updatedAt:  moment().format('DD.MM.YYYY, dddd, h:mm:ss'),
-            like:       11,
-            dislike:    null, // значение не передано
-            text:       '123123',
-            image: {
-                src:    'http://fishki.net/picsw/092011/20/bonus/foto/049.jpg',
-                height: '230',
-                width:  '150',
-                alt:    'qwerty'
-            }
-        }
-    }
-
     render() {
-        return React.createElement('div', {},
-            React.createElement(TextBox, this.meta),
-            React.createElement(Like,    this.meta),
-            React.createElement(Image,   this.meta.image))
+        console.log(this.props);
+        const { like, dislike, text, image, meta } = this.props;
+        return (
+            <div>
+                <TextBox text={text} meta={{...meta}}/>
+                <Like like={like} dislike={dislike} />
+                <Image {...image} />
+            </div>
+
+        )
+    }
+}
+const BlogList = ({children}) => (
+    <div>
+        {
+            map(
+                children,
+                (child, key) => (
+                    <div key={key}>
+                        {child}
+                    </div>
+                )
+            )
+        }
+    </div>
+);
+
+class BlogPage extends React.Component {
+    render() {
+        return (
+            <BlogList>
+                {[
+                    <BlogItem
+                        meta       = {{
+                            author:    'nobody',
+                            createdAt: moment('10-01-2017 10:00:00').format('DD.MM.YYYY, dddd, h:mm:ss'),
+                            updatedAt: moment().format('DD.MM.YYYY, dddd, h:mm:ss')
+                        }}
+                    />,
+                    <BlogItem
+                        like       = {20}
+                        text       = 'Пост #1'
+                        image      = {{
+                            src:    'http://fishki.net/picsw/092011/20/bonus/foto/049.jpg',
+                            height: '230',
+                            width:  '150',
+                            alt:    'qwerty'
+                        }}
+                        meta       = {{
+                            author:   'dpro',
+                            createdAt: moment('09-31-2017 11:11:11').format('DD.MM.YYYY, dddd, h:mm:ss'),
+                            updatedAt: moment().format('DD.MM.YYYY, dddd, h:mm:ss')
+                        }}
+                    />
+                ]}
+            </BlogList>
+        )
     }
 }
 
 ReactDOM.render(
-    React.createElement('div', {},
-        React.createElement(BlogItem),
-        React.createElement(BlogItem),
-        React.createElement(BlogItem)),
+    React.createElement('div', {}, React.createElement(BlogPage)),
     document.getElementById('app')
 );
