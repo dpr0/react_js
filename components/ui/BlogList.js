@@ -3,18 +3,22 @@ import BlogItem from '../ui/BlogItem';
 import _        from 'lodash';
 const { map }   = _;
 
-class BlogList extends React.Component {
-    render() {
-        return(
-            <div className='bloglist'>
-                {
-                    map(this.props,
-                        (hash, key) => (<BlogItem key={key} {...hash} />)
+const BlogList = ({ posts, likeFunc, dislikeFunc }) => {
+    return(
+        <div className='bloglist'>
+            {
+                map(posts, (hash) => (
+                        <BlogItem
+                            key={hash.id}
+                            {...hash}
+                            likeFunc={likeFunc}
+                            dislikeFunc={dislikeFunc}
+                        />
                     )
-                }
-            </div>
-        )
-    }
-}
+                )
+            }
+        </div>
+    )
+};
 
 export default BlogList;
