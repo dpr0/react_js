@@ -1,12 +1,15 @@
-import React        from 'react';
-import BlogList     from '../ui/BlogList';
-import formatedDate from '../../helpers/dateHelper';
-import { bind }     from 'lodash/function';
+import React         from 'react';
+import BlogList      from '../ui/BlogList';
+import PieChart      from '../ui/PieChart';
+import PieChartLikes from '../ui/PieChart';
+import formatedDate  from '../../helpers/dateHelper';
+import { bind }      from 'lodash/function';
 
 let posts = [
     {
         id: 1,
         like: 20,
+        dislike: 0,
         title: 'Пост #1',
         body: 'hello world',
         image: {
@@ -23,6 +26,8 @@ let posts = [
     },
     {
         id: 2,
+        like: 7,
+        dislike: 10
     },
     {
         id: 3,
@@ -47,7 +52,7 @@ let posts = [
 class BlogPageContainer extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { posts: props.posts };
+        this.state = { columns: props.posts };
         this.likeFunc = bind(this.likeFunc, this);
         this.dislikeFunc = bind(this.dislikeFunc, this);
     }
@@ -65,7 +70,22 @@ class BlogPageContainer extends React.Component {
     }) }
 
     render() {
-        return (<BlogList posts={posts} likeFunc={this.likeFunc} dislikeFunc={this.dislikeFunc} />)
+        return (
+            <div>
+                <PieChart posts={posts} />
+                <PieChartLikes postsLikes={
+                    map(posts,
+                        function(post){ return [post.id, post.like] }
+                    )
+                }
+                />
+                <BlogList
+                    posts={posts}
+                    likeFunc={this.likeFunc}
+                    dislikeFunc={this.dislikeFunc}
+                />
+            </div>
+        )
     }
 }
 

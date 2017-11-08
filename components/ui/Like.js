@@ -9,7 +9,7 @@ const Like = ({ like, dislike, likeFunc, dislikeFunc }) => {
             </p>
             <p>
                 <button onClick={dislikeFunc}>DISLIKE!</button>
-                Нравится: {dislike}
+                Не нравится: {dislike}
             </p>
         </div>
     )
