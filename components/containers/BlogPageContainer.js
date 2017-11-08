@@ -57,17 +57,23 @@ class BlogPageContainer extends React.Component {
         this.dislikeFunc = bind(this.dislikeFunc, this);
     }
 
-    likeFunc(id) { _.each(posts, (post) => {
-        if (post.id == id) {
-            post.like == undefined ? (post.like=1) : (post.like+=1);
-            this.setState({ posts });}
-    }) }
+    likeFunc(id) {
+        let cloned_posts = this.state.posts;
+        _.each(cloned_posts, (post) => {
+            if (post.id == id) {
+                post.like == undefined ? (post.like=1) : (post.like+=1);
+                this.setState({ posts: cloned_posts });}
+        })
+    }
 
-    dislikeFunc(id) { _.each(posts, (post) => {
-        if (post.id == id) {
-            post.dislike == undefined ? (post.dislike=1) : (post.dislike+=1);
-            this.setState({ posts });}
-    }) }
+    dislikeFunc(id) {
+        let cloned_posts = this.state.posts;
+        _.each(cloned_posts, (post) => {
+            if (post.id == id) {
+                post.dislike == undefined ? (post.dislike=1) : (post.dislike+=1);
+                this.setState({ posts: cloned_posts });}
+        })
+    }
 
     render() {
         return (
