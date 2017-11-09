@@ -8,6 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "c3": "^0.4.18",
+    "clone-deep": "^1.0.0",
     "d3": "^4.11.0",
     "immutability-helper": "^2.4.0",
     "lodash": "^4.17.4",

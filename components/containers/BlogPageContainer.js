@@ -58,7 +58,7 @@ class BlogPageContainer extends React.Component {
     }
 
     likeFunc(id) {
-        let cloned_posts = this.state.posts;
+        let cloned_posts = assign({}, this.state.posts);
         _.each(cloned_posts, (post) => {
             if (post.id == id) {
                 post.like == undefined ? (post.like=1) : (post.like+=1);
@@ -67,7 +67,7 @@ class BlogPageContainer extends React.Component {
     }
 
     dislikeFunc(id) {
-        let cloned_posts = this.state.posts;
+        let cloned_posts = assign({}, this.state.posts);
         _.each(cloned_posts, (post) => {
             if (post.id == id) {
                 post.dislike == undefined ? (post.dislike=1) : (post.dislike+=1);
