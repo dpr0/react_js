@@ -3,14 +3,10 @@ import React     from 'react';
 const Like = ({ like, dislike, likeFunc, dislikeFunc }) => {
     return(
         <div>
-            <p>
-                <button onClick={likeFunc}>LIKE!</button>
-                Нравится: {like}
-            </p>
-            <p>
-                <button onClick={dislikeFunc}>DISLIKE!</button>
-                Не нравится: {dislike}
-            </p>
+            Нравится: {like}
+            <button onClick={likeFunc}>LIKE!</button>
+            Не нравится: {dislike}
+            <button onClick={dislikeFunc}>DISLIKE!</button>
         </div>
     )
 };

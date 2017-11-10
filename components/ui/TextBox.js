@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 const TextBox = ({id, meta, title, body}) => (
     <div>
-        <hr />
         <h1>{title}</h1>
         <h3>{body}</h3>
         <ul>

@@ -1,3 +1,4 @@
+import d3 from 'd3';
 import c3 from 'c3';
 import formatedColumns from '../../helpers/pieChartHelper';
 
@@ -9,7 +10,6 @@ class PieChart extends React.Component {
             data: {
                 columns: formatedColumns(this.props),
                 type : 'pie',
-
                 onclick: function (d, i) { console.log("onclick", d, i); }
             }
         })
