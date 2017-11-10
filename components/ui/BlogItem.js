@@ -5,11 +5,14 @@ import TextBox from '../ui/TextBox';
 
 class BlogItem extends React.Component {
     render() {
-        const { like, dislike, text, image, meta } = this.props;
+        const { id, like, dislike, title, body, image, meta, likeFunc, dislikeFunc } = this.props;
         return (
             <div>
-                <TextBox text={text} meta={meta} />
-                <Like like={like} dislike={dislike} />
+                <TextBox id={id} title={title} body={body} meta={meta} />
+                <Like like={like}
+                      dislike={dislike}
+                      likeFunc={() => likeFunc(id)}
+                      dislikeFunc={() => dislikeFunc(id)} />
                 <Image {...image} />
             </div>
 

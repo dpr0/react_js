@@ -1,45 +1,51 @@
-import React        from 'react';
-import BlogList     from '../ui/BlogList';
-import formatedDate from '../../helpers/dateHelper';
-
-let posts = [
-    {
-        like: 20,
-        text: 'Пост #1',
-        image: {
-            src: 'http://fishki.net/picsw/092011/20/bonus/foto/049.jpg',
-            height: '230',
-            width: '150',
-            alt: 'qwerty'
-        },
-        meta: {
-            author: 'dpro',
-            createdAt: formatedDate('31-10-2017 11:11:11'),
-            updatedAt: formatedDate('01-11-2017 11:11:11'),
-        }
-    },
-    {
-    },
-    {
-        like: 1,
-        text: 'Пост #3',
-        image: {
-            src: 'http://fishki.net/picsw/092011/20/bonus/foto/049.jpg',
-            height: '230',
-            width: '150',
-            alt: 'qwerty'
-        },
-        meta: {
-            author: 'dpro',
-            createdAt: formatedDate('03-10-2017 11:11:11'),
-            updatedAt: formatedDate('04-10-2017 11:11:11'),
-        }
-    }
-];
+import React from 'react';
+import BlogList from '../ui/BlogList';
+import { bind, cloneDeep } from 'lodash/function';
+import { PieChart, PieChartLikes } from '../ui/PieChart';
 
 class BlogPageContainer extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { posts: props.posts };
+        this.likeFunc = bind(this.likeFunc, this);
+        this.dislikeFunc = bind(this.dislikeFunc, this);
+    }
+
+    likeFunc(id) {
+        let cloned_posts = cloneDeep(this.state.posts);
+        _.each(cloned_posts, (post) => {
+            if (post.id == id) {
+                post.like == undefined ? (post.like=1) : (post.like+=1);
+                this.setState({ posts: cloned_posts });}
+        })
+    }
+
+    dislikeFunc(id) {
+        let cloned_posts = cloneDeep(this.state.posts);
+        _.each(cloned_posts, (post) => {
+            if (post.id == id) {
+                post.dislike == undefined ? (post.dislike=1) : (post.dislike+=1);
+                this.setState({ posts: cloned_posts });}
+        })
+    }
+
     render() {
-        return (<BlogList {...posts}/>)
+        return (
+            <div>
+                <PieChart posts={this.state.posts} />
+                <PieChartLikes postsLikes={
+                    map(this.state.posts,
+                        function(post){ return [post.id, post.like] }
+                    )
+                }
+                />
+                <BlogList
+                    posts={this.state.posts}
+                    likeFunc={this.likeFunc}
+                    dislikeFunc={this.dislikeFunc}
+                />
+            </div>
+        )
     }
 }
 

@@ -1,9 +1,10 @@
 import React     from 'react';
 import PropTypes from 'prop-types';
 
-const TextBox = ({meta, text}) => (
+const TextBox = ({id, meta, title, body}) => (
     <div>
-        <h3>{text}</h3>
+        <h1>{title}</h1>
+        <h3>{body}</h3>
         <ul>
             <li style={meta.author    ? {} : {display: 'none'}}><b>author:   </b> {meta.author}   </li>
             <li style={meta.createdAt ? {} : {display: 'none'}}><b>createdAt:</b> {meta.createdAt}</li>
@@ -11,13 +12,15 @@ const TextBox = ({meta, text}) => (
         </ul>
     </div>
 );
-TextBox.defaultProps = {text: 'empty', meta: {author: 'nobody', createdAt: 'no date'}};
+TextBox.defaultProps = {title: 'empty', body: 'empty', meta: {author: 'nobody', createdAt: 'no date'}};
 TextBox.propTypes = {
+    id: PropTypes.number,
     meta: PropTypes.shape({
         author:    PropTypes.string,
         createdAt: PropTypes.string,
         updatedAt: PropTypes.string
     }),
-    text: PropTypes.string};
+    title: PropTypes.string,
+    body: PropTypes.string};
 
 export default TextBox;
