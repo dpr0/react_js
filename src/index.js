@@ -1,7 +1,7 @@
-import React    from 'react';
-import ReactDOM from 'react-dom';
-import App      from './App';
+import React            from 'react';
+import ReactDOM         from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
+import App              from './App';
 import '../semantic/dist/semantic.css';
 
 const rootElement = document.getElementById('app');

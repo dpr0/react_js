@@ -1,13 +1,27 @@
 import PropTypes from 'prop-types';
-import DOM       from 'react-dom';
 
-const Image = ({ src, height, width, alt }) => DOM.img({ src, height, width, alt });
+const Image = ({ src, height, width, alt }) => (
+  <div>
+    <Img
+      src={src}
+      height={height}
+      width={width}
+      alt={alt}
+    />
+  </div>
+);
+
 Image.defaultProps = {
   src: 'http://stormweb.pro/images/cms/data/raznoe/error_404.jpg',
   height: '168',
   width: '206',
   alt: '404'
 };
-Image.propTypes = {src: PropTypes.string, height: PropTypes.string, width: PropTypes.string, alt: PropTypes.string};
+Image.propTypes = {
+  src:    PropTypes.string,
+  height: PropTypes.string,
+  width:  PropTypes.string,
+  alt:    PropTypes.string
+};
 
 export default Image;

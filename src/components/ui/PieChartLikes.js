@@ -1,5 +1,6 @@
-import React from 'react';
-import c3 from 'c3';
+import React     from 'react';
+import c3        from 'c3';
+import PropTypes from 'prop-types';
 
 class PieChartLikes extends React.Component {
   componentDidMount() {
@@ -27,6 +28,8 @@ class PieChartLikes extends React.Component {
   }
 }
 PieChartLikes.defaultProps = {};
-PieChartLikes.propTypes = {};
+PieChartLikes.propTypes = {
+  postsLikes: PropTypes.array,
+};
 
 export default PieChartLikes;

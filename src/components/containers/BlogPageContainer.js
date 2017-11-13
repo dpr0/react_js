@@ -3,6 +3,7 @@ import _             from 'lodash';
 import BlogList      from '../ui/BlogList';
 import PieChart      from '../ui/PieChart';
 import PieChartLikes from '../ui/PieChartLikes';
+import PropTypes     from 'prop-types';
 
 class BlogPageContainer extends React.Component {
   constructor(props) {
@@ -50,7 +51,7 @@ class BlogPageContainer extends React.Component {
   }
 }
 BlogPageContainer.defaultProps = {};
-BlogPageContainer.propTypes = {};
+BlogPageContainer.propTypes = {posts: PropTypes.object};
 
 export default BlogPageContainer;
 

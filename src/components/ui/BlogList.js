@@ -1,6 +1,7 @@
 import React     from 'react';
 import BlogItem  from '../ui/BlogItem';
 import _         from 'lodash';
+import PropTypes from 'prop-types';
 
 const BlogList = ({ posts, likeFunc, dislikeFunc }) => (
   <div className='bloglist'>
@@ -17,6 +18,10 @@ const BlogList = ({ posts, likeFunc, dislikeFunc }) => (
   </div>
 );
 BlogList.defaultProps = {};
-BlogList.propTypes = {};
+BlogList.propTypes = {
+  posts:       PropTypes.object,
+  likeFunc:    PropTypes.func,
+  dislikeFunc: PropTypes.func
+};
 
 export default BlogList;
