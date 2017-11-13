@@ -9,9 +9,9 @@
   "dependencies": {
     "c3": "^0.4.18",
     "clone-deep": "^1.0.0",
-    "d3": "^4.11.0",
     "immutability-helper": "^2.4.0",
     "react": "^16.1.0",
+    "react-bootstrap-table": "^4.1.4",
     "react-dom": "^16.1.0",
     "react-scripts": "1.0.14",
     "semantic-ui-react": "^0.76.0"
@@ -30,6 +30,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.26.0",
     "css-loader": "^0.28.7",
+    "d3": "^3.5.6",
     "eslint": "^4.11.0",
     "eslint-plugin-destructuring": "^2.1.0",
     "eslint-plugin-import": "^2.8.0",

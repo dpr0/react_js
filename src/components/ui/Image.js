@@ -1,8 +1,9 @@
+import React     from 'react';
 import PropTypes from 'prop-types';
 
 const Image = ({ src, height, width, alt }) => (
   <div>
-    <Img
+    <img
       src={src}
       height={height}
       width={width}
@@ -12,10 +13,10 @@ const Image = ({ src, height, width, alt }) => (
 );
 
 Image.defaultProps = {
-  src: 'http://stormweb.pro/images/cms/data/raznoe/error_404.jpg',
+  src:    'http://stormweb.pro/images/cms/data/raznoe/error_404.jpg',
   height: '168',
-  width: '206',
-  alt: '404'
+  width:  '206',
+  alt:    '404'
 };
 Image.propTypes = {
   src:    PropTypes.string,

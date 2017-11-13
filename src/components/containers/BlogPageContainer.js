@@ -4,11 +4,12 @@ import BlogList      from '../ui/BlogList';
 import PieChart      from '../ui/PieChart';
 import PieChartLikes from '../ui/PieChartLikes';
 import PropTypes     from 'prop-types';
+import { posts as staticPosts } from 'constants/static/posts';
 
 class BlogPageContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { posts: props.posts };
+    this.state = { posts: staticPosts };
     this.likeFunc = _.bind(this.likeFunc, this);
     this.dislikeFunc = _.bind(this.dislikeFunc, this);
   }
@@ -34,13 +35,14 @@ class BlogPageContainer extends React.Component {
   render() {
     return (
       <div>
-        <PieChart posts={this.state.posts} />
-        <PieChartLikes postsLikes={
-          _.map(this.state.posts,
-            function(post) { return [post.id, post.like]; }
-          )
-        }
+        <PieChartLikes
+          postsLikes={
+            _.map(this.state.posts,
+              function(post) { return [post.id, post.like]; }
+            )
+          }
         />
+        <PieChart posts={this.state.posts} />
         <BlogList
           posts={this.state.posts}
           likeFunc={this.likeFunc}

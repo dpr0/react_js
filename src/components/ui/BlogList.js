@@ -19,7 +19,7 @@ const BlogList = ({ posts, likeFunc, dislikeFunc }) => (
 );
 BlogList.defaultProps = {};
 BlogList.propTypes = {
-  posts:       PropTypes.object,
+  posts:       PropTypes.array,
   likeFunc:    PropTypes.func,
   dislikeFunc: PropTypes.func
 };
