@@ -4,8 +4,18 @@ import { Button } from 'semantic-ui-react';
 
 const Like = ({ like, dislike, likeFunc, dislikeFunc }) => (
   <div>
-    <Button size='small' color='green' onClick={likeFunc}>LIKE! {like}</Button>
-    <Button size='small' color='red'   onClick={dislikeFunc}>DISLIKE! {dislike}</Button>
+    <Button
+      color='green'
+      icon='thumbs outline up'
+      onClick={likeFunc}
+      label={{ basic: true, color: 'black', pointing: 'left', content: like }}
+    />
+    <Button
+      color='red'
+      icon='thumbs outline down'
+      onClick={dislikeFunc}
+      label={{ basic: true, color: 'black', pointing: 'left', content: dislike }}
+    />
   </div>
 );
 Like.defaultProps = {};
