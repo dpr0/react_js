@@ -21,12 +21,12 @@ export const posts = [
   },
   {
     id: 2,
-    like: 7,
-    dislike: 10
+    like: 15,
+    dislike: 30
   },
   {
     id: 3,
-    like: 1,
+    like: 20,
     dislike: 1,
     title: 'Пост #3',
     body: 'hello world',

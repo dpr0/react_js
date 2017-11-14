@@ -67,4 +67,3 @@ BlogPageContainer.defaultProps = {};
 BlogPageContainer.propTypes = {posts: PropTypes.object};
 
 export default BlogPageContainer;
-
