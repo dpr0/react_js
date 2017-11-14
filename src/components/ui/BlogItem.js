@@ -3,6 +3,7 @@ import Like       from './Like';
 import Image      from './Image';
 import TextBox    from './TextBox';
 import PropTypes  from 'prop-types';
+import { Grid, Segment } from 'semantic-ui-react';
 
 class BlogItem extends React.Component {
   render() {
@@ -10,18 +11,25 @@ class BlogItem extends React.Component {
     return (
       <div>
         <hr />
-        <TextBox id={id} title={title} body={body} meta={meta} />
+        <Grid columns={3} relaxed>
+          <Grid.Column>
+            <Segment basic>
+              <TextBox id={id} title={title} body={body} meta={meta} />
+            </Segment>
+          </Grid.Column>
+          <Grid.Column>
+            <Segment basic>
+              <Image {...image} />
+            </Segment>
+          </Grid.Column>
+        </Grid>
         <Like
           like={like}
           dislike={dislike}
           likeFunc={() => likeFunc(id)}
           dislikeFunc={() => dislikeFunc(id)}
         />
-        <div>
-          <Image {...image} />
-        </div>
       </div>
-
     );
   }
 }

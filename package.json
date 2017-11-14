@@ -11,6 +11,7 @@
     "clone-deep": "^1.0.0",
     "immutability-helper": "^2.4.0",
     "react": "^16.1.0",
+    "react-bootstrap": "^0.31.5",
     "react-bootstrap-table": "^4.1.4",
     "react-dom": "^16.1.0",
     "react-scripts": "1.0.14",

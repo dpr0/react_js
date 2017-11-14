@@ -5,6 +5,7 @@ import PieChart      from '../ui/PieChart';
 import PieChartLikes from '../ui/PieChartLikes';
 import PropTypes     from 'prop-types';
 import { posts as staticPosts } from 'constants/static/posts';
+import { Grid, Segment } from 'semantic-ui-react';
 
 class BlogPageContainer extends React.Component {
   constructor(props) {
@@ -35,19 +36,29 @@ class BlogPageContainer extends React.Component {
   render() {
     return (
       <div>
-        <PieChartLikes
-          postsLikes={
-            _.map(this.state.posts,
-              function(post) { return [post.id, post.like]; }
-            )
-          }
-        />
-        <PieChart posts={this.state.posts} />
-        <BlogList
-          posts={this.state.posts}
-          likeFunc={this.likeFunc}
-          dislikeFunc={this.dislikeFunc}
-        />
+        <Grid columns={3} relaxed>
+          <Grid.Column>
+            <Segment basic>
+              <PieChartLikes
+                postsLikes={
+                  _.map(this.state.posts,
+                    function(post) { return [post.id, post.like]; }
+                  )
+                }
+              />
+            </Segment>
+            <PieChart posts={this.state.posts} />
+          </Grid.Column>
+          <Grid.Column>
+            <Segment basic>
+              <BlogList
+                posts={this.state.posts}
+                likeFunc={this.likeFunc}
+                dislikeFunc={this.dislikeFunc}
+              />
+            </Segment>
+          </Grid.Column>
+        </Grid>
       </div>
     );
   }
