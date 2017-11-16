@@ -37,7 +37,7 @@ module.exports = {
         ]
     },
     resolve: {
-        modules: [root, 'node_modules'],
+        modules: ['./src', 'node_modules'],
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin()
