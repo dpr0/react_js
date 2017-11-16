@@ -9,12 +9,13 @@
   "dependencies": {
     "c3": "^0.4.18",
     "clone-deep": "^1.0.0",
-    "d3": "^4.11.0",
     "immutability-helper": "^2.4.0",
-    "lodash": "^4.17.4",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-scripts": "1.0.14"
+    "react": "^16.1.0",
+    "react-bootstrap": "^0.31.5",
+    "react-bootstrap-table": "^4.1.4",
+    "react-dom": "^16.1.0",
+    "react-scripts": "1.0.14",
+    "semantic-ui-react": "^0.76.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -29,10 +30,25 @@
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.26.0",
+    "css-loader": "^0.28.7",
+    "d3": "^3.5.6",
+    "eslint": "^4.11.0",
+    "eslint-plugin-destructuring": "^2.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-react": "^7.4.0",
     "express": "^4.16.2",
-    "moment": "^2.19.1",
+    "file-loader": "^1.1.5",
+    "gulp": "^3.9.1",
+    "gulp-build": "^0.5.3",
+    "lodash": "^4.17.4",
+    "moment": "^2.19.2",
     "prop-types": "^15.6.0",
-    "react-dom-factories": "^1.0.2"
+    "react-dom-factories": "^1.0.2",
+    "react-hot-loader": "^3.0.0",
+    "semantic-ui": "^2.2.13",
+    "style-loader": "^0.19.0",
+    "url-loader": "^0.6.2",
+    "webpack-dev-server": "^2.9.4"
   },
   "directories": {
     "test": "test"
