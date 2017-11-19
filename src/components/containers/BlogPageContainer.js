@@ -4,15 +4,27 @@ import BlogList      from '../ui/BlogList';
 import PieChart      from '../ui/PieChart';
 import PieChartLikes from '../ui/PieChartLikes';
 import PropTypes     from 'prop-types';
-import { posts as staticPosts } from 'constants/static/posts';
+import request       from 'superagent';
 import { Grid, Segment } from 'semantic-ui-react';
 
 class BlogPageContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { posts: staticPosts };
+    this.state = { posts: [] };
     this.likeFunc = _.bind(this.likeFunc, this);
     this.dislikeFunc = _.bind(this.dislikeFunc, this);
+  }
+
+  componentDidMount() {
+    this.fetchPosts();
+  }
+
+  fetchPosts() {
+    request.get(
+      'http://192.168.1.21/api/v1/camera_models.json',
+      {},
+      (err, res) => this.setState({ posts: res.body })
+    );
   }
 
   likeFunc(id) {

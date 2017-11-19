@@ -8,7 +8,7 @@ export const posts = [
     title: 'Пост #1',
     body: 'hello world',
     image: {
-      src: 'http://fishki.net/picsw/092011/20/bonus/foto/049.jpg',
+      src: 'https://instagram.fhrk1-1.fna.fbcdn.net/t51.2885-15/e35/21479794_123830621607748_4363161708689096704_n.jpg',
       height: '230',
       width: '150',
       alt: 'qwerty'
@@ -22,10 +22,19 @@ export const posts = [
   {
     id: 2,
     like: 15,
-    dislike: 30
+    dislike: 30,
   },
   {
     id: 3,
+    like: 15,
+    dislike: 30,
+    image: {
+      src:
+'https://instagram.fhrk1-1.fna.fbcdn.net/t51.2885-15/s1080x1080/e35/15624348_580636935463402_6884876358384615424_n.jpg'
+    },
+  },
+  {
+    id: 4,
     like: 20,
     dislike: 1,
     title: 'Пост #3',

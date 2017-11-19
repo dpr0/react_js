@@ -7,7 +7,6 @@ const TextBox = ({meta, title, body}) => (
     <List>
       <List.Item>
         <List.Content>
-          <List.Header as='a'>{title}</List.Header>
           <List.Description>{body}</List.Description>
         </List.Content>
       </List.Item>
@@ -30,13 +29,11 @@ const TextBox = ({meta, title, body}) => (
 );
 TextBox.defaultProps = {title: 'empty', body: 'empty', meta: {author: 'nobody', createdAt: 'no date'}};
 TextBox.propTypes = {
-  id: PropTypes.number,
   meta: PropTypes.shape({
     author:    PropTypes.string,
     createdAt: PropTypes.string,
     updatedAt: PropTypes.string
   }),
-  title: PropTypes.string,
   body: PropTypes.string};
 
 export default TextBox;

@@ -2,8 +2,10 @@ import React      from 'react';
 import Like       from './Like';
 import Image      from './Image';
 import TextBox    from './TextBox';
+import Link       from '../../components/elements/Link';
 import PropTypes  from 'prop-types';
 import { Grid, Segment } from 'semantic-ui-react';
+import { postPath } from '../../helpers/routes';
 
 const BlogItem = ({ id, like, dislike, title, body, image, meta, likeFunc, dislikeFunc }) => (
   <div>
@@ -11,7 +13,8 @@ const BlogItem = ({ id, like, dislike, title, body, image, meta, likeFunc, disli
     <Grid columns={3} relaxed>
       <Grid.Column>
         <Segment basic>
-          <TextBox id={id} title={title} body={body} meta={meta} />
+          <Link to={postPath(id)}>{title}</Link>
+          <TextBox body={body} meta={meta} />
         </Segment>
       </Grid.Column>
       <Grid.Column>
