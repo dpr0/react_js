@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React     from 'react';
+import PropTypes from 'prop-types';
 import { Item }  from 'semantic-ui-react';
 import { posts } from '../../constants/static/posts';
 import BlogItem  from '../ui/BlogItem';
@@ -6,7 +7,7 @@ import BlogItem  from '../ui/BlogItem';
 class PostContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { post: posts[props.id - 1] };
+    this.state = {post: posts[props.params.id-1]};
     this.likeFunc = _.bind(this.likeFunc, this);
     this.dislikeFunc = _.bind(this.dislikeFunc, this);
   }
@@ -27,7 +28,7 @@ class PostContainer extends React.Component {
     return (
       <Item.Group>
         <BlogItem
-          post={ posts[this.state.id - 1] }
+          {...this.state.post}
           likeFunc={this.likeFunc}
           dislikeFunc={this.dislikeFunc}
         />
@@ -36,6 +37,6 @@ class PostContainer extends React.Component {
   }
 }
 
-// Post.propTypes = { params: PropTypes.object };
+PostContainer.propTypes = { post: PropTypes.object };
 
 export default PostContainer;

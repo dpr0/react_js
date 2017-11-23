@@ -1,11 +1,18 @@
-import MainLayout        from '../components/layouts/MainLayout';
-import { postPath }      from '../helpers/routes';
+import MainLayout from '../components/layouts/MainLayout';
+import PostContainer from '../components/containers/PostContainer';
+import CameraContainer from '../components/containers/CameraContainer';
 import BlogPageContainer from '../components/containers/BlogPageContainer';
-import PostContainer     from '../components/containers/PostContainer';
+import ForumPageContainer from '../components/containers/ForumPageContainer';
+import { postPath, rootPath, cameraPath, camerasPath } from '../helpers/routes';
 
 const Index = {
-  path: '/',
+  path: rootPath(),
   component: BlogPageContainer
+};
+
+const CamerasRoute = {
+  path: camerasPath(),
+  component: ForumPageContainer
 };
 
 const PostRoute = {
@@ -13,7 +20,12 @@ const PostRoute = {
   component: PostContainer
 };
 
+const CameraRoute = {
+  path: cameraPath(),
+  component: CameraContainer
+};
+
 export default {
   component: MainLayout,
-  childrenRoutes: [ Index, PostRoute ]
+  childRoutes: [ Index, PostRoute, CameraRoute, CamerasRoute ]
 };

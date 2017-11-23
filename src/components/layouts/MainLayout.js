@@ -1,7 +1,8 @@
 import React, {PropTypes} from 'react';
 import { Button, Header, Segment, Container } from 'semantic-ui-react';
 import Link from '../../components/elements/Link';
-import history from 'helpers/history';
+import history from '../../helpers/history';
+import { postPath } from '../../helpers/routes';
 
 const MainLayout = ({children}) => (
   <Container>
@@ -23,7 +24,7 @@ const GoBackButton = () => (
 const Logo = () => (
   <Segment>
     <Header>
-      <Link to='/'>Blog</Link>
+      <Link to={ postPath } >Blog</Link>
     </Header>
   </Segment>
 );

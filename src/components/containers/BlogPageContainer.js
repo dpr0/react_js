@@ -1,27 +1,28 @@
-import React         from 'react';
-import _             from 'lodash';
-import BlogList      from '../ui/BlogList';
-import PieChart      from '../ui/PieChart';
-import PieChartLikes from '../ui/PieChartLikes';
-import PropTypes     from 'prop-types';
-import request       from 'superagent';
+import React             from 'react';
+import _                 from 'lodash';
+import BlogList          from '../ui/BlogList';
+import PieChart          from '../ui/PieChart';
+import PieChartLikes     from '../ui/PieChartLikes';
+import PropTypes         from 'prop-types';
+import request           from 'superagent';
 import { Grid, Segment } from 'semantic-ui-react';
+import { posts as staticPosts } from 'constants/static/posts';
 
 class BlogPageContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { posts: [] };
+    this.state = { posts: staticPosts };
     this.likeFunc = _.bind(this.likeFunc, this);
     this.dislikeFunc = _.bind(this.dislikeFunc, this);
   }
 
   componentDidMount() {
-    this.fetchPosts();
+    // this.fetchPosts();
   }
 
   fetchPosts() {
     request.get(
-      'http://192.168.1.21/api/v1/camera_models.json',
+      '----------------',
       {},
       (err, res) => this.setState({ posts: res.body })
     );
