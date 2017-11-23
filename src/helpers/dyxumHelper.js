@@ -1,3 +1,1 @@
-export default function formatedLink(link) {
-  return link ? `http://www.dyxum.com${link}` : null;
-}
+export const formatedLink = (link) => `http://www.dyxum.com${link}`;
