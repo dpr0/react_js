@@ -9,7 +9,6 @@ class ForumPageContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {cameras: []};
-    this.likeFunc = _.bind(this.likeFunc, this);
   }
 
   componentWillMount() {
@@ -33,6 +32,6 @@ class ForumPageContainer extends React.Component {
   }
 }
 
-ForumPageContainer.propTypes = { post: PropTypes.object };
+ForumPageContainer.propTypes = { cameras: PropTypes.array };
 
 export default ForumPageContainer;

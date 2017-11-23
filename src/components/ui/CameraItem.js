@@ -5,7 +5,7 @@ import PropTypes  from 'prop-types';
 import Link       from '../../components/elements/Link';
 import { Grid, Segment } from 'semantic-ui-react';
 import { cameraPath } from '../../helpers/routes';
-import formatedLink from 'helpers/dyxumHelper';
+import formatedLink from '../../helpers/dyxumHelper';
 
 const CameraItem = ({
   id, brand, name, mount, ff, created_at, updated_at, full_name,
