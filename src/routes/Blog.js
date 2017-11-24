@@ -1,6 +1,6 @@
 import MainLayout from '../components/layouts/MainLayout';
-import AboutContainer from '../components/containers/AboutContainer';
 import PostContainer from '../components/containers/PostContainer';
+import AboutContainer from '../components/containers/AboutContainer';
 import CameraContainer from '../components/containers/CameraContainer';
 import BlogPageContainer from '../components/containers/BlogPageContainer';
 import ForumPageContainer from '../components/containers/ForumPageContainer';
