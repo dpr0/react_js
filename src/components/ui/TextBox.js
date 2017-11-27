@@ -2,7 +2,7 @@ import React     from 'react';
 import PropTypes from 'prop-types';
 import { List }  from 'semantic-ui-react';
 
-const TextBox = ({meta, title, body}) => (
+const TextBox = ({meta, body}) => (
   <div>
     <List>
       <List.Item>
@@ -27,7 +27,7 @@ const TextBox = ({meta, title, body}) => (
     </List>
   </div>
 );
-TextBox.defaultProps = {title: 'empty', body: 'empty', meta: {author: 'nobody', createdAt: 'no date'}};
+TextBox.defaultProps = {body: 'empty', meta: {author: 'nobody', createdAt: 'no date'}};
 TextBox.propTypes = {
   meta: PropTypes.shape({
     author:    PropTypes.string,

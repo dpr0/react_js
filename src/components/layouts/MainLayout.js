@@ -1,30 +1,22 @@
-import React, {PropTypes} from 'react';
-import { Button, Header, Segment, Container } from 'semantic-ui-react';
-import Link from '../../components/elements/Link';
-import history from '../../helpers/history';
-import { postPath } from '../../helpers/routes';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Link from 'components/elements/Link';
+import { Header, Segment, Container } from 'semantic-ui-react';
+import { rootPath, aboutPath } from 'helpers/routes';
 
 const MainLayout = ({children}) => (
   <Container>
     <Logo />
-    <GoBackButton />
     {children}
     <Footer />
   </Container>
 );
 
-// MainLayout.propTypes = {
-//   children: PropTypes.node
-// };
-
-const GoBackButton = () => (
-  <Button onClick={ () => history.goBack() }>Назад</Button>
-);
-
 const Logo = () => (
   <Segment>
     <Header>
-      <Link to={ postPath } >Blog</Link>
+      <Link to={ rootPath } >Blog</Link>
+      <Link to={ aboutPath } >About</Link>
     </Header>
   </Segment>
 );
@@ -34,5 +26,7 @@ const Footer = () => (
     Powered by dpro
   </Segment>
 );
+
+MainLayout.propTypes = {children: PropTypes.object};
 
 export default MainLayout;

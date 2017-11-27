@@ -1,8 +1,8 @@
 import React             from 'react';
 import _                 from 'lodash';
-import BlogList          from '../ui/BlogList';
-import PieChart          from '../ui/PieChart';
-import PieChartLikes     from '../ui/PieChartLikes';
+import BlogList          from 'components/ui/BlogList';
+import PieChart          from 'components/ui/PieChart';
+import PieChartLikes     from 'components/ui/PieChartLikes';
 import PropTypes         from 'prop-types';
 import request           from 'superagent';
 import { Grid, Segment } from 'semantic-ui-react';
@@ -31,7 +31,7 @@ class BlogPageContainer extends React.Component {
     const clonedPosts = _.cloneDeep(this.state.posts);
     _.each(clonedPosts, (post) => {
       if (post.id == id) {
-        post.like == undefined ? (post.like = 1) : (post.like += 1);
+        post.like = post.like ? (post.like + 1) : 1;
         this.setState({ posts: clonedPosts });}
     });
   }
@@ -40,7 +40,7 @@ class BlogPageContainer extends React.Component {
     const clonedPosts = _.cloneDeep(this.state.posts);
     _.each(clonedPosts, (post) => {
       if (post.id == id) {
-        post.dislike == undefined ? (post.dislike = 1) : (post.dislike += 1);
+        post.dislike = post.dislike ? (post.dislike + 1) : 1;
         this.setState({ posts: clonedPosts });}
     });
   }
@@ -51,6 +51,15 @@ class BlogPageContainer extends React.Component {
         <Grid columns={3} relaxed>
           <Grid.Column>
             <Segment basic>
+              <BlogList
+                posts={this.state.posts}
+                likeFunc={this.likeFunc}
+                dislikeFunc={this.dislikeFunc}
+              />
+            </Segment>
+          </Grid.Column>
+          <Grid.Column>
+            <Segment basic>
               <PieChartLikes
                 postsLikes={
                   _.map(this.state.posts,
@@ -59,15 +68,8 @@ class BlogPageContainer extends React.Component {
                 }
               />
             </Segment>
-            <PieChart posts={this.state.posts} />
-          </Grid.Column>
-          <Grid.Column>
             <Segment basic>
-              <BlogList
-                posts={this.state.posts}
-                likeFunc={this.likeFunc}
-                dislikeFunc={this.dislikeFunc}
-              />
+              <PieChart posts={this.state.posts} />
             </Segment>
           </Grid.Column>
         </Grid>

@@ -1,8 +1,8 @@
-import _ from 'lodash';
+import { map } from 'lodash';
 
 export default function formatedColumns(props) {
   return [
-    ['Likes'   ].concat(_.map(props.posts, function(item) { return item.like; })),
-    ['Dislikes'].concat(_.map(props.posts, function(item) { return item.dislike; })),
+    ['Likes'   ].concat(map(props.posts, function(item) { return item.like; })),
+    ['Dislikes'].concat(map(props.posts, function(item) { return item.dislike; })),
   ];
 }

@@ -1,11 +1,11 @@
-import React      from 'react';
-import Like       from './Like';
-import Image      from './Image';
-import TextBox    from './TextBox';
-import Link       from '../../components/elements/Link';
-import PropTypes  from 'prop-types';
+import React             from 'react';
+import Like              from 'components/ui/Like';
+import Image             from 'components/ui/Image';
+import TextBox           from 'components/ui/TextBox';
+import Link              from 'components/elements/Link';
+import PropTypes         from 'prop-types';
+import { postPath }      from 'helpers/routes';
 import { Grid, Segment } from 'semantic-ui-react';
-import { postPath } from '../../helpers/routes';
 
 const BlogItem = ({ id, like, dislike, title, body, image, meta, likeFunc, dislikeFunc }) => (
   <div>
@@ -13,13 +13,13 @@ const BlogItem = ({ id, like, dislike, title, body, image, meta, likeFunc, disli
     <Grid columns={3} relaxed>
       <Grid.Column>
         <Segment basic>
-          <Link to={postPath(id)}>{title}</Link>
-          <TextBox body={body} meta={meta} />
+          <Image {...image} />
         </Segment>
       </Grid.Column>
       <Grid.Column>
         <Segment basic>
-          <Image {...image} />
+          <Link to={postPath(id)}>{title}</Link>
+          <TextBox body={body} meta={meta} />
         </Segment>
       </Grid.Column>
     </Grid>

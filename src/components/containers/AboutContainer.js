@@ -1,9 +1,9 @@
 import React from 'react';
-import TextBox    from '../ui/TextBox';
+import TextBox from 'components/ui/TextBox';
 
 const AboutContainer = () => (
   <div>
-    <TextBox body={'fwgfs'} />
+    <TextBox body={'components components components components components components components components'} />
   </div>
 );
 

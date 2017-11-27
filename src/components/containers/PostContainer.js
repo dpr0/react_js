@@ -1,7 +1,9 @@
 import React     from 'react';
 import PropTypes from 'prop-types';
 import { Item }  from 'semantic-ui-react';
-import BlogItem  from '../ui/BlogItem';
+import BlogItem  from 'components/ui/BlogItem';
+import _         from 'lodash';
+import request   from 'superagent';
 
 class PostContainer extends React.Component {
   constructor(props) {
@@ -12,26 +14,26 @@ class PostContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchPosts();
+    this.fetchPost();
   }
 
-  fetchPosts() {
+  fetchPost() {
     request.get(
-      'http://localhost:3001',
+      `http://localhost:3001/post/${this.props.params.id}`,
       {},
-      (err, res) => this.setState({ post: res.body.id })
+      (err, res) => this.setState({ post: res.body })
     );
   }
 
   likeFunc() {
     const clonedPost = _.cloneDeep(this.state.post);
-    clonedPost.like == undefined ? (clonedPost.like = 1) : (clonedPost.like += 1);
+    clonedPost.like = clonedPost.like ? (clonedPost.like + 1) : 1;
     this.setState({ post: clonedPost });
   }
 
   dislikeFunc() {
     const clonedPost = _.cloneDeep(this.state.post);
-    clonedPost.dislike == undefined ? (clonedPost.dislike = 1) : (clonedPost.dislike += 1);
+    clonedPost.dislike = clonedPost.dislike ? (clonedPost.dislike + 1) : 1;
     this.setState({ post: clonedPost });
   }
 

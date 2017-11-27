@@ -1,29 +1,17 @@
-import MainLayout from '../components/layouts/MainLayout';
-import PostContainer from '../components/containers/PostContainer';
-import AboutContainer from '../components/containers/AboutContainer';
-import CameraContainer from '../components/containers/CameraContainer';
-import BlogPageContainer from '../components/containers/BlogPageContainer';
-import ForumPageContainer from '../components/containers/ForumPageContainer';
-import { postPath, rootPath, cameraPath, camerasPath, aboutPath } from '../helpers/routes';
+import MainLayout from 'components/layouts/MainLayout';
+import PostContainer from 'components/containers/PostContainer';
+import AboutContainer from 'components/containers/AboutContainer';
+import BlogPageContainer from 'components/containers/BlogPageContainer';
+import { postPath, rootPath, aboutPath } from 'helpers/routes';
 
 const Index = {
   path: rootPath(),
   component: BlogPageContainer
 };
 
-const CamerasRoute = {
-  path: camerasPath(),
-  component: ForumPageContainer
-};
-
 const PostRoute = {
   path: postPath(),
   component: PostContainer
-};
-
-const CameraRoute = {
-  path: cameraPath(),
-  component: CameraContainer
 };
 
 const About = {
@@ -33,5 +21,5 @@ const About = {
 
 export default {
   component: MainLayout,
-  childRoutes: [ Index, PostRoute, CameraRoute, CamerasRoute, About ]
+  childRoutes: [ Index, PostRoute, About ]
 };
