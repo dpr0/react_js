@@ -15,8 +15,18 @@ const MainLayout = ({children}) => (
 const Logo = () => (
   <Segment>
     <Header>
-      <Link to={ rootPath } >Blog</Link>
-      <Link to={ aboutPath } >About</Link>
+      <div className="ui horizontal segments">
+        <div className="ui segment">
+          <p>
+            <Link to={ rootPath } >Blog</Link>
+          </p>
+        </div>
+        <div className="ui segment">
+          <p>
+            <Link to={ aboutPath } >About</Link>
+          </p>
+        </div>
+      </div>
     </Header>
   </Segment>
 );

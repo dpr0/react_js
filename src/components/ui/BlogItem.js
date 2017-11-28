@@ -8,27 +8,21 @@ import { postPath }      from 'helpers/routes';
 import { Grid, Segment } from 'semantic-ui-react';
 
 const BlogItem = ({ id, like, dislike, title, body, image, meta, likeFunc, dislikeFunc }) => (
-  <div>
-    <hr />
-    <Grid columns={3} relaxed>
-      <Grid.Column>
-        <Segment basic>
+  <div className="ui raised link card">
+    <div className="content">
+      <TextBox body={body} meta={meta} />
+      <div className="description">
+        <p>
           <Image {...image} />
-        </Segment>
-      </Grid.Column>
-      <Grid.Column>
-        <Segment basic>
-          <Link to={postPath(id)}>{title}</Link>
-          <TextBox body={body} meta={meta} />
-        </Segment>
-      </Grid.Column>
-    </Grid>
-    <Like
-      like={like}
-      dislike={dislike}
-      likeFunc={() => likeFunc(id)}
-      dislikeFunc={() => dislikeFunc(id)}
-    />
+          <Like
+            like={like}
+            dislike={dislike}
+            likeFunc={() => likeFunc(id)}
+            dislikeFunc={() => dislikeFunc(id)}
+          />
+        </p>
+      </div>
+    </div>
   </div>
 );
 BlogItem.defaultProps = {};
