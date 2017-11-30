@@ -1,6 +1,6 @@
 import React           from 'react';
 import c3              from 'c3';
-import formatedColumns from '../../helpers/pieChartHelper';
+import formatedColumns from 'helpers/pieChartHelper';
 import PropTypes       from 'prop-types';
 
 class PieChart extends React.Component {

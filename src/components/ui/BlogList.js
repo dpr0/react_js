@@ -1,11 +1,11 @@
 import React     from 'react';
-import BlogItem  from '../ui/BlogItem';
-import _         from 'lodash';
+import BlogItem  from 'components/ui/BlogItem';
+import { map }   from 'lodash';
 import PropTypes from 'prop-types';
 
 const BlogList = ({ posts, likeFunc, dislikeFunc }) => (
   <div className='bloglist'>
-    {_.map(posts,
+    {map(posts,
       (hash) => (
         <BlogItem
           key={hash.id}
