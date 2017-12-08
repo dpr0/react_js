@@ -1,12 +1,18 @@
 import MainLayout from 'components/layouts/MainLayout';
+
 // import PostContainer from 'components/containers/PostContainer';
-import AboutContainer from 'components/containers/AboutContainer';
-import { fetchPosts } from 'actions/Posts';
-import { fetchPost } from 'actions/Post';
 // import BlogPageContainer from 'components/containers/BlogPageContainer';
+
+import AboutContainer from 'components/containers/AboutContainer';
+
+import { fetchPosts } from 'actions/Posts';
+
+import { fetchPost } from 'actions/Post';
+
 import { postPath, rootPath, aboutPath } from 'helpers/routes';
 
 import PostsContainer from 'containers/PostsContainer';
+
 import PostContainer from 'containers/PostContainer';
 
 const Index = {

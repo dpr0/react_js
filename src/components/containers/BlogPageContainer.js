@@ -1,10 +1,17 @@
 import React             from 'react';
+
 import _                 from 'lodash';
+
 import BlogList          from 'components/ui/BlogList';
+
 import PieChart          from 'components/ui/PieChart';
+
 import PieChartLikes     from 'components/ui/PieChartLikes';
+
 import PropTypes         from 'prop-types';
+
 import request           from 'superagent';
+
 import { Grid, Segment } from 'semantic-ui-react';
 
 class BlogPageContainer extends React.Component {
