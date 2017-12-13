@@ -1,20 +1,12 @@
 import React from 'react';
-
 import ReactDOM from 'react-dom';
-
 import { Router, match, browserHistory } from 'react-router';
 // import { BrowserRouter, StaticRouter, Route, Link, hashHistory } from 'react-router-dom';
-
 import { Provider } from 'react-redux';
-
 import store from 'store';
-
-import routes from 'routes/index';
-
+import routes from 'routes';
 import history from 'helpers/history';
-
 import prepareData from 'helpers/prepareData';
-
 import DevTools from 'containers/DevTools';
 
 function historyCallback(location) {

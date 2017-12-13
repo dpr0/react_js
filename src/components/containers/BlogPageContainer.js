@@ -1,18 +1,12 @@
 import React             from 'react';
-
 import _                 from 'lodash';
-
 import BlogList          from 'components/ui/BlogList';
-
 import PieChart          from 'components/ui/PieChart';
-
 import PieChartLikes     from 'components/ui/PieChartLikes';
-
 import PropTypes         from 'prop-types';
-
 import request           from 'superagent';
-
 import { Grid, Segment } from 'semantic-ui-react';
+import { API_ROOT } from 'constants/API';
 
 class BlogPageContainer extends React.Component {
   constructor(props) {
@@ -28,9 +22,9 @@ class BlogPageContainer extends React.Component {
 
   fetchPosts() {
     request.get(
-      'http://localhost:3001',
+      `${API_ROOT}`,
       {},
-      (err, res) => this.setState({ posts: res.body })
+      (err, response) => this.setState({ posts: response.body })
     );
   }
 

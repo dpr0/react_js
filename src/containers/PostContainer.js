@@ -1,18 +1,10 @@
 import { connect } from 'react-redux';
-
-import flowRight from 'lodash';
-
-import PostContainer from 'components/containers/PostContainer';
+import BlogItem from 'components/ui/BlogItem';
 
 const stateToProps = (state) => ({
-  items:      state.post.entry,
-  isFetching: state.post.isFetching,
-  error:      state.post.error
+  item:       state.posts.entry,
+  isFetching: state.posts.isFetching,
+  error:      state.posts.error
 });
 
-const actionsToProps = (dispatch) => ({
-  // like: flowRight(dispatch, like), // (params) => dispatch(deposit(params))
-  // dislike: flowRight(dispatch, dislike)
-});
-
-export default connect(stateToProps, actionsToProps)(PostContainer);
+export default connect(stateToProps)(BlogItem);

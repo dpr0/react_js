@@ -1,9 +1,10 @@
-import React     from 'react';
-import PropTypes from 'prop-types';
-import { Item }  from 'semantic-ui-react';
-import BlogItem  from 'components/ui/BlogItem';
-import _         from 'lodash';
-import request   from 'superagent';
+import React        from 'react';
+import PropTypes    from 'prop-types';
+import { Item }     from 'semantic-ui-react';
+import BlogItem     from 'components/ui/BlogItem';
+import _            from 'lodash';
+import request      from 'superagent';
+import { API_ROOT } from 'constants/API';
 
 class PostContainer extends React.Component {
   constructor(props) {
@@ -19,9 +20,9 @@ class PostContainer extends React.Component {
 
   fetchPost() {
     request.get(
-      `http://localhost:3001/post/${this.props.params.id}`,
+      `${API_ROOT}/post/${this.props.params.id}`,
       {},
-      (err, res) => this.setState({ post: res.body })
+      (err, response) => this.setState({ post: response.body })
     );
   }
 

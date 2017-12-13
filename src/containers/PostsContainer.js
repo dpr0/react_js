@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-
-import BlogPageContainer from 'components/containers/BlogPageContainer';
+import BlogList from 'components/ui/BlogList';
 
 const stateToProps = (state) => ({
   items:      state.posts.entries,
@@ -8,4 +7,4 @@ const stateToProps = (state) => ({
   error:      state.posts.error
 });
 
-export default connect(stateToProps)(BlogPageContainer);
+export default connect(stateToProps)(BlogList);

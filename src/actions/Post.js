@@ -6,9 +6,9 @@ const requestPost = (id) => ({
   id
 });
 
-const receivePost = (res) => ({
+const receivePost = (response) => ({
   type: types.FETCH_POST_SUCCESS,
-  res
+  response
 });
 
 const errorPost = () => ({
@@ -17,12 +17,11 @@ const errorPost = () => ({
 
 export function fetchPost(id) {
   return (dispatch) => {
-    dispatch(requestPost());
-
+    dispatch(requestPost(id));
     return request
-      .get(`${API_ROOT}/posts/${id}`)
-      .end((err, res) => {
-        err ? dispatch(errorPost()) : dispatch(receivePost(res));
+      .get(`${API_ROOT}/post/${id}`)
+      .end((err, response) => {
+        err ? dispatch(errorPost()) : dispatch(receivePost(response.body));
       });
   };
 }
