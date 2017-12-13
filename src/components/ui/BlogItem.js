@@ -7,39 +7,39 @@ import { Item }   from 'semantic-ui-react';
 import PropTypes  from 'prop-types';
 import {postPath, postLikePath} from 'helpers/routes';
 
-const BlogItem = ({ id, like, dislike, title, body, image, meta, likeFunc, dislikeFunc }) => (
+// const BlogItem = ({ id, like, dislike, title, body, image, meta, likeFunc, dislikeFunc }) => (
+const BlogItem = ({ item }) => (
   <Item.Group>
     <div className="ui raised link card">
-      <div className="content">
-        <Link to={postPath(id)}>{title}</Link>
-        <TextBox body={body} meta={meta} />
+      { item && <div className="content">
+        <Link to={postPath(item.id)}>{item.title}</Link>
+        <TextBox body={item.body} meta={item.meta} />
         <div className="description">
-          <Image {...image} />
-          <Link to={postLikePath(id)}>
-            <Like
-              like={like}
-              dislike={dislike}
-              // likeFunc={() => likeFunc(id)}
-              // dislikeFunc={() => dislikeFunc(id)}
-            />
-          </Link>
+          <Image {...item.image} />
+          <Like
+            like={item.like}
+            dislike={item.dislike}
+            // likeFunc={() => likeFunc(id)}
+            // dislikeFunc={() => dislikeFunc(id)}
+          />
         </div>
-      </div>
+      </div> }
     </div>
   </Item.Group>
 );
 
 BlogItem.defaultProps = {};
 BlogItem.propTypes = {
-  id:          PropTypes.number,
-  like:        PropTypes.number,
-  dislike:     PropTypes.number,
-  title:       PropTypes.string,
-  body:        PropTypes.string,
-  image:       PropTypes.object,
-  meta:        PropTypes.object,
-  likeFunc:    PropTypes.func,
-  dislikeFunc: PropTypes.func
+  item:        PropTypes.object
+  // id:          PropTypes.number,
+  // like:        PropTypes.number,
+  // dislike:     PropTypes.number,
+  // title:       PropTypes.string,
+  // body:        PropTypes.string,
+  // image:       PropTypes.object,
+  // meta:        PropTypes.object,
+  // likeFunc:    PropTypes.func,
+  // dislikeFunc: PropTypes.func
 };
 
 export default BlogItem;

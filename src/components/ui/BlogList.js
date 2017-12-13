@@ -12,11 +12,11 @@ const BlogList = ({ items }) => (
       <Grid.Column>
         <Segment basic>
           <div className='bloglist'>
-            { map(items,
-              (hash) => (
+            { _.map(items,
+              (post) => (
                 <BlogItem
-                  key={hash.id}
-                  {...hash}
+                  key={post.id}
+                  item={post}
                   // likeFunc={this.likeFunc}
                   // dislikeFunc={this.dislikeFunc}
                 />
