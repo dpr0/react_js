@@ -1,4 +1,4 @@
-import { map } from 'lodash';
+import { map } from 'lodash/collection';
 
 export default function formatedColumns(props) {
   return [

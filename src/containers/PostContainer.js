@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import BlogItem from 'components/ui/BlogItem';
+import Post from 'components/ui/Post';
 
 const stateToProps = (state) => ({
-  item:       state.posts.entry,
-  isFetching: state.posts.isFetching,
-  error:      state.posts.error
+  item:       state.post.entry,
+  isFetching: state.post.isFetching,
+  error:      state.post.error
 });
 
-export default connect(stateToProps)(BlogItem);
+export default connect(stateToProps)(Post);

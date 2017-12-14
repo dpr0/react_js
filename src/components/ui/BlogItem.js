@@ -7,18 +7,17 @@ import { Item }   from 'semantic-ui-react';
 import PropTypes  from 'prop-types';
 import {postPath, postLikePath} from 'helpers/routes';
 
-// const BlogItem = ({ id, like, dislike, title, body, image, meta, likeFunc, dislikeFunc }) => (
-const BlogItem = ({ item }) => (
+const BlogItem = ({ id, like, dislike, title, body, image, meta, likeFunc, dislikeFunc }) => (
   <Item.Group>
     <div className="ui raised link card">
-      { item && <div className="content">
-        <Link to={postPath(item.id)}>{item.title}</Link>
-        <TextBox body={item.body} meta={item.meta} />
+      { id && <div className="content">
+        <Link to={postPath(id)}>{title}</Link>
+        <TextBox body={body} meta={meta} />
         <div className="description">
-          <Image {...item.image} />
+          <Image {...image} />
           <Like
-            like={item.like}
-            dislike={item.dislike}
+            like={like}
+            dislike={dislike}
             // likeFunc={() => likeFunc(id)}
             // dislikeFunc={() => dislikeFunc(id)}
           />
@@ -30,16 +29,16 @@ const BlogItem = ({ item }) => (
 
 BlogItem.defaultProps = {};
 BlogItem.propTypes = {
-  item:        PropTypes.object
-  // id:          PropTypes.number,
-  // like:        PropTypes.number,
-  // dislike:     PropTypes.number,
-  // title:       PropTypes.string,
-  // body:        PropTypes.string,
-  // image:       PropTypes.object,
-  // meta:        PropTypes.object,
-  // likeFunc:    PropTypes.func,
-  // dislikeFunc: PropTypes.func
+  // item:        PropTypes.object
+  id:          PropTypes.number,
+  like:        PropTypes.number,
+  dislike:     PropTypes.number,
+  title:       PropTypes.string,
+  body:        PropTypes.string,
+  image:       PropTypes.object,
+  meta:        PropTypes.object,
+  likeFunc:    PropTypes.func,
+  dislikeFunc: PropTypes.func
 };
 
 export default BlogItem;

@@ -2,7 +2,7 @@ import React             from 'react';
 import BlogItem          from 'components/ui/BlogItem';
 import PieChart          from 'components/ui/PieChart';
 import PieChartLikes     from 'components/ui/PieChartLikes';
-import { map }           from 'lodash';
+import { map }           from 'lodash/collection';
 import PropTypes         from 'prop-types';
 import { Grid, Segment } from 'semantic-ui-react';
 
@@ -12,11 +12,11 @@ const BlogList = ({ items }) => (
       <Grid.Column>
         <Segment basic>
           <div className='bloglist'>
-            { _.map(items,
+            { map(items,
               (post) => (
                 <BlogItem
                   key={post.id}
-                  item={post}
+                  {...post}
                   // likeFunc={this.likeFunc}
                   // dislikeFunc={this.dislikeFunc}
                 />
@@ -29,7 +29,7 @@ const BlogList = ({ items }) => (
         <Segment basic>
           <PieChartLikes
             postsLikes={
-              _.map(items,
+              map(items,
                 function(post) { return [post.id, post.like]; }
               )
             }
@@ -45,7 +45,7 @@ const BlogList = ({ items }) => (
 
 BlogList.defaultProps = {};
 BlogList.propTypes = {
-  posts:       PropTypes.array,
+  items:       PropTypes.array,
   likeFunc:    PropTypes.func,
   dislikeFunc: PropTypes.func
 };
