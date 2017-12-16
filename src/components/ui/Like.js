@@ -2,18 +2,18 @@ import React      from 'react';
 import PropTypes  from 'prop-types';
 import { Button } from 'semantic-ui-react';
 
-const Like = ({ like, dislike, likeFunc, dislikeFunc }) => (
+const Like = ({ id, like, dislike, likeFunc, dislikeFunc }) => (
   <div>
     <Button
       color='green'
       icon='thumbs outline up'
-      onClick={likeFunc}
+      onClick={() => likeFunc(id)}
       label={{ basic: true, color: 'black', pointing: 'left', content: like }}
     />
     <Button
       color='red'
       icon='thumbs outline down'
-      onClick={dislikeFunc}
+      onClick={() => dislikeFunc(id)}
       label={{ basic: true, color: 'black', pointing: 'left', content: dislike }}
     />
   </div>

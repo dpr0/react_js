@@ -1,6 +1,7 @@
 import request from 'superagent';
 import { API_ROOT } from 'constants/API';
 import * as types from 'constants/actionTypes/PostActionTypes';
+
 const requestPost = (id) => ({
   type: types.FETCH_POST_REQUEST,
   id

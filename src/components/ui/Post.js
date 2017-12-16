@@ -2,13 +2,13 @@ import React             from 'react';
 import BlogItem          from 'components/ui/BlogItem';
 import PropTypes         from 'prop-types';
 
-const Post = ({ item }) => (
+const Post = ({ item, likeFunc, dislikeFunc }) => (
   <div>
     { item && <BlogItem
       key={item.id}
       {...item}
-      // likeFunc={this.likeFunc}
-      // dislikeFunc={this.dislikeFunc}
+      likeFunc={likeFunc}
+      dislikeFunc={dislikeFunc}
     /> }
   </div>
 );

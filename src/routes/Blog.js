@@ -1,20 +1,24 @@
-import MainLayout       from 'components/layouts/MainLayout';
-// import PostContainer from 'components/containers/PostContainer';
-// import BlogPageContainer from 'components/containers/BlogPageContainer';
-import AboutContainer   from 'components/containers/AboutContainer';
-import { fetchPosts }   from 'actions/Posts';
-import { fetchPost }    from 'actions/Post';
-import { fetchLike }    from 'actions/Like';
-import { fetchDislike } from 'actions/Dislike';
-import { postPath, rootPath, postLikePath, postDislikePath, aboutPath } from 'helpers/routes';
-import PostsContainer   from 'containers/PostsContainer';
-import PostContainer    from 'containers/PostContainer';
-import LikeContainer    from 'containers/LikeContainer';
-import DislikeContainer from 'containers/DislikeContainer';
+import MainLayout        from 'components/layouts/MainLayout';
+import AboutContainer    from 'containers/AboutContainer';
+import { fetchPosts }    from 'actions/Posts';
+import { fetchPost }     from 'actions/Post';
+import { likeFunc }      from 'actions/Like';
+import { dislikeFunc }   from 'actions/Like';
+import { postPath, rootPath, postLikePath, aboutPath, pieChartPath, postDislikePath } from 'helpers/routes';
+import PostsContainer    from 'containers/PostsContainer';
+import PostContainer     from 'containers/PostContainer';
+import PieChartContainer from 'containers/PieChartContainer';
+import LikeContainer     from 'containers/LikeContainer';
 
 const Index = {
   path: rootPath(),
   component: PostsContainer,
+  prepareData: (store) => { store.dispatch(fetchPosts()); }
+};
+
+const PieChartRoute = {
+  path: pieChartPath(),
+  component: PieChartContainer,
   prepareData: (store) => { store.dispatch(fetchPosts()); }
 };
 
@@ -27,13 +31,13 @@ const PostRoute = {
 const PostLikeRoute = {
   path: postLikePath(),
   component: LikeContainer,
-  prepareData: (store, query, params) => { store.dispatch(fetchLike(params.id)); }
+  prepareData: (store, query, params) => { store.dispatch(likeFunc(params.id)); }
 };
 
 const PostDislikeRoute = {
   path: postDislikePath(),
-  component: DislikeContainer,
-  prepareData: (store, query, params) => { store.dispatch(fetchDislike(params.id)); }
+  component: LikeContainer,
+  prepareData: (store, query, params) => { store.dispatch(dislikeFunc(params.id)); }
 };
 
 const About = {
@@ -43,5 +47,5 @@ const About = {
 
 export default {
   component: MainLayout,
-  childRoutes: [ Index, PostRoute, About, PostLikeRoute, PostDislikeRoute ]
+  childRoutes: [ Index, PostRoute, About, PieChartRoute, PostLikeRoute, PostDislikeRoute ]
 };

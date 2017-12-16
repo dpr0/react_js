@@ -1,28 +1,35 @@
 import request from 'superagent';
 import { API_ROOT } from 'constants/API';
-import * as types from 'constants/actionTypes/LikeActionTypes';
-const requestLike = (id) => ({
-  type: types.FETCH_LIKE_REQUEST,
-  id
+import { LIKE, DISLIKE } from 'constants/actionTypes/LikeActionTypes';
+
+const requestLike = (id, count) => ({
+  type: LIKE,
+  id,
+  count
 });
 
-const receiveLike = (response) => ({
-  type: types.FETCH_LIKE_SUCCESS,
-  response
+const requestDislike = (id, count) => ({
+  type: DISLIKE,
+  id,
+  count
 });
 
-const errorLike = () => ({
-  type: types.FETCH_LIKE_ERROR
-});
-
-export function fetchLike(id) {
+export function likeFunc(id) {
   return (dispatch) => {
-    dispatch(requestLike());
-
     return request
       .post(`${API_ROOT}/post/${id}/like`)
       .end((err, response) => {
-        err ? dispatch(errorLike()) : dispatch(receiveLike(response.body));
+        dispatch(requestLike(id, response.body.count));
+      });
+  };
+}
+
+export function dislikeFunc(id) {
+  return (dispatch) => {
+    return request
+      .post(`${API_ROOT}/post/${id}/dislike`)
+      .end((err, response) => {
+        dispatch(requestDislike(id, response.body.count));
       });
   };
 }

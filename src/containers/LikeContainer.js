@@ -1,9 +1,16 @@
 import { connect } from 'react-redux';
+import Like from 'components/ui/Like';
+import { likeFunc, dislikeFunc } from 'actions/Like';
 
-const stateToProps = (state) => ({
-  items:      state.post.entry,
-  isFetching: state.post.isFetching,
-  error:      state.post.error
+const stateToProps = (state, ownProps) => ({
+  id:      ownProps.id,
+  like:    ownProps.like,
+  dislike: ownProps.dislike
 });
 
-// export default connect(stateToProps)();
+const actionToProps = (dispatch) => ({
+  likeFunc:    (id) => { dispatch(likeFunc(id)); },
+  dislikeFunc: (id) => { dispatch(dislikeFunc(id)); },
+});
+
+export default connect(stateToProps, actionToProps)(Like);
