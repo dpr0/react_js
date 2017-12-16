@@ -5,7 +5,7 @@ import { map }           from 'lodash/collection';
 import PropTypes         from 'prop-types';
 import { Grid, Segment } from 'semantic-ui-react';
 
-const BlogList = ({ items, likeFunc, dislikeFunc }) => (
+const BlogList = ({ items }) => (
   <div>
     <Grid columns={3} relaxed>
       <Grid.Column>
@@ -17,8 +17,6 @@ const BlogList = ({ items, likeFunc, dislikeFunc }) => (
                   id={post.id}
                   key={post.id}
                   {...post}
-                  likeFunc={likeFunc}
-                  dislikeFunc={dislikeFunc}
                 />
               )
             )}

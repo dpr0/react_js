@@ -7,7 +7,7 @@ import { Item }      from 'semantic-ui-react';
 import PropTypes     from 'prop-types';
 import { postPath }  from 'helpers/routes';
 
-const BlogItem = ({ id, like, dislike, title, body, image, meta, likeFunc, dislikeFunc }) => (
+const BlogItem = ({ id, like, dislike, title, body, image, meta }) => (
   <Item.Group>
     <div className="ui raised link card">
       { id && <div className="content">
@@ -19,8 +19,6 @@ const BlogItem = ({ id, like, dislike, title, body, image, meta, likeFunc, disli
             id={id}
             like={like}
             dislike={dislike}
-            likeFunc={() => likeFunc(id)}
-            dislikeFunc={() => dislikeFunc(id)}
           />
         </div>
       </div> }
