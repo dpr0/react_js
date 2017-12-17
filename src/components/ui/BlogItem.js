@@ -1,28 +1,31 @@
-import React      from 'react';
-import Like       from 'components/ui/Like';
-import Image      from 'components/ui/Image';
-import TextBox    from 'components/ui/TextBox';
-import Link       from 'components/elements/Link';
-import PropTypes  from 'prop-types';
-import {postPath} from 'helpers/routes';
+import React         from 'react';
+import LikeContainer from 'containers/LikeContainer';
+import Image         from 'components/ui/Image';
+import TextBox       from 'components/ui/TextBox';
+import Link          from 'components/elements/Link';
+import { Item }      from 'semantic-ui-react';
+import PropTypes     from 'prop-types';
+import { postPath }  from 'helpers/routes';
 
-const BlogItem = ({ id, like, dislike, title, body, image, meta, likeFunc, dislikeFunc }) => (
-  <div className="ui raised link card">
-    <div className="content">
-      <Link to={postPath(id)}>{title}</Link>
-      <TextBox body={body} meta={meta} />
-      <div className="description">
-        <Image {...image} />
-        <Like
-          like={like}
-          dislike={dislike}
-          likeFunc={() => likeFunc(id)}
-          dislikeFunc={() => dislikeFunc(id)}
-        />
-      </div>
+const BlogItem = ({ id, like, dislike, title, body, image, meta }) => (
+  <Item.Group>
+    <div className="ui raised link card">
+      { id && <div className="content">
+        <Link to={postPath(id)}>{title}</Link>
+        <TextBox body={body} meta={meta} />
+        <div className="description">
+          <Image {...image} />
+          <LikeContainer
+            id={id}
+            like={like}
+            dislike={dislike}
+          />
+        </div>
+      </div> }
     </div>
-  </div>
+  </Item.Group>
 );
+
 BlogItem.defaultProps = {};
 BlogItem.propTypes = {
   id:          PropTypes.number,

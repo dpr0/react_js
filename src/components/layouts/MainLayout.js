@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'components/elements/Link';
 import { Header, Segment, Input, Icon } from 'semantic-ui-react';
-import { rootPath, aboutPath } from 'helpers/routes';
+import { rootPath, aboutPath, pieChartPath } from 'helpers/routes';
 
 const MainLayout = ({children}) => (
   <div>
@@ -17,8 +17,9 @@ const Logo = () => (
     <Header>
       <div className="ui attached stackable menu">
         <div className="ui container">
-          <Link className="item home icon" to={ rootPath } >Home</Link>
-          <Link className="item info icon" to={ aboutPath } >About</Link>
+          <Link className="item" to={ rootPath } >Home</Link>
+          <Link className="item" to={ pieChartPath } >Chart</Link>
+          <Link className="item" to={ aboutPath } >About</Link>
           <div className="ui simple dropdown item">
             Sample
             <i className="dropdown icon"></i>
