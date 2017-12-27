@@ -11,13 +11,13 @@ const initialState = {
 
 function likeFunc(post, id, count) {
   return update(
-    post, { like: { $apply: () => count + 1 } }
+    post, { like: { $apply: () => count } }
   );
 }
 
 function dislikeFunc(post, id, count) {
   return update(
-    post, { dislike: { $apply: () => count - 1 } }
+    post, { dislike: { $apply: () => count } }
   );
 }
 

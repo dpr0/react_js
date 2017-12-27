@@ -11,17 +11,18 @@ const initialState = {
 
 function likeFunc(entries, id, count) {
   const index = entries.findIndex((post) => post.id == id);
-  return update(
+  let x = update(
     entries,
-    { [index]: { like: { $apply: () => count + 1 } } }
+    { [index]: { like: { $apply: () => count } } }
   );
+  return x;
 }
 
 function dislikeFunc(entries, id, count) {
   const index = entries.findIndex((post) => post.id == id);
   return update(
     entries,
-    { [index]: { dislike: { $apply: () => count - 1 } } }
+    { [index]: { dislike: { $apply: () => count } } }
   );
 }
 
