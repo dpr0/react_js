@@ -18,6 +18,8 @@ const Post = ({ items }) => (
 );
 
 Post.defaultProps = {};
-Post.propTypes = { items: PropTypes.array };
+Post.propTypes = {
+  items: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
+};
 
 export default Post;

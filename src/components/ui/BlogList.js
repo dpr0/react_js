@@ -35,7 +35,7 @@ const BlogList = ({ items, likeFunc }) => (
 
 BlogList.defaultProps = {};
 BlogList.propTypes = {
-  items:    PropTypes.array,
+  items:    PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   likeFunc: PropTypes.func
 };
 
