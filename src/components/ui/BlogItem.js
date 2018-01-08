@@ -1,5 +1,5 @@
 import React         from 'react';
-import LikeContainer from 'containers/LikeContainer';
+import Like          from 'components/ui/Like';
 import Image         from 'components/ui/Image';
 import TextBox       from 'components/ui/TextBox';
 import Link          from 'components/elements/Link';
@@ -7,7 +7,7 @@ import { Item }      from 'semantic-ui-react';
 import PropTypes     from 'prop-types';
 import { postPath }  from 'helpers/routes';
 
-const BlogItem = ({ id, like, dislike, title, body, image, meta }) => (
+const BlogItem = ({ id, like, dislike, title, body, image, meta, likeFunc }) => (
   <Item.Group>
     <div className="ui raised link card">
       { id && <div className="content">
@@ -15,10 +15,11 @@ const BlogItem = ({ id, like, dislike, title, body, image, meta }) => (
         <TextBox body={body} meta={meta} />
         <div className="description">
           <Image {...image} />
-          <LikeContainer
+          <Like
             id={id}
             like={like}
             dislike={dislike}
+            likeFunc={likeFunc}
           />
         </div>
       </div> }
@@ -35,8 +36,7 @@ BlogItem.propTypes = {
   body:        PropTypes.string,
   image:       PropTypes.object,
   meta:        PropTypes.object,
-  likeFunc:    PropTypes.func,
-  dislikeFunc: PropTypes.func
+  likeFunc:    PropTypes.func
 };
 
 export default BlogItem;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'components/elements/Link';
 import { Header, Segment, Input, Icon } from 'semantic-ui-react';
