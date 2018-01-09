@@ -9,7 +9,7 @@ const Post = ({ items }) => (
     <PieChartLikes
       postsLikes={
         map(items,
-          (post) => ( [post.id, post.like] )
+          (post) => ([post.id, post.like])
         )
       }
     />
@@ -18,6 +18,8 @@ const Post = ({ items }) => (
 );
 
 Post.defaultProps = {};
-Post.propTypes = { item: PropTypes.object };
+Post.propTypes = {
+  items: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
+};
 
 export default Post;

@@ -56,6 +56,7 @@ module.exports = {
         "no-underscore-dangle": 1,
         "no-whitespace-before-property": 1,
         "no-var": 1,
+        "no-console": 0,
         "object-shorthand": 1,
         "padded-blocks": ["warn", "never"],
         "prefer-const": 1,
