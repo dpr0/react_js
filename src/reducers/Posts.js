@@ -3,9 +3,11 @@ import * as types from 'constants/actionTypes/PostsActionTypes';
 import * as likeTypes from 'constants/actionTypes/LikeActionTypes';
 
 const initialState = {
-  loading: false,
-  error:   false,
-  entries: []
+  loading:     false,
+  error:       false,
+  entries:     [],
+  page:        1,
+  postsLength: null
 };
 
 export default function (state = initialState, action) {
@@ -15,7 +17,11 @@ export default function (state = initialState, action) {
     case types.FETCH_POSTS_ERROR:
       return assign({}, state, { error: true });
     case types.FETCH_POSTS_SUCCESS:
-      return assign({}, state, { entries: action.response });
+      return assign(
+        {},
+        state,
+        { entries: action.response.items, page: action.response.page, postsLength: action.response.postsLength }
+      );
     case likeTypes.LIKE_REQUEST:
       return assign({}, state, { loading: true });
     case likeTypes.LIKE_ERROR:
