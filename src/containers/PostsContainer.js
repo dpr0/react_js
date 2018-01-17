@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import BlogList from 'components/ui/BlogList';
+import Index from 'components/Index';
 import { likePost } from 'actions/Like';
 import { fetchPosts } from 'actions/Posts';
 
@@ -18,4 +18,4 @@ const actionToProps = (dispatch) => ({
 
 // const options = {pure: true, areStatesEqual: (next, prev) => shallowEqual(prev.items, next.items)};
 
-export default connect(stateToProps, actionToProps)(BlogList);
+export default connect(stateToProps, actionToProps)(Index);

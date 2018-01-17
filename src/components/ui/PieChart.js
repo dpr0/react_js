@@ -1,18 +1,21 @@
 import React           from 'react';
-import c3              from 'c3';
+// import c3              from 'c3';
 import formatedColumns from 'helpers/pieChartHelper';
 import PropTypes       from 'prop-types';
 
 class PieChart extends React.Component {
   componentDidMount() {
+    const c3 = require('c3');
     this.state = { columns: formatedColumns(this.props) };
-    this.pieChart = c3.generate({
-      bindto: this.refs.pieChart,
-      data: {
-        columns: formatedColumns(this.props),
-        type : 'pie',
-      }
-    });
+    if (__CLIENT__) {
+      this.pieChart = c3.generate({
+        bindto: this.refs.pieChart,
+        data: {
+          columns: formatedColumns(this.props),
+          type : 'pie',
+        }
+      });
+    }
   }
 
   componentWillUnmount() {

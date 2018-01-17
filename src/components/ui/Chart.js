@@ -6,14 +6,14 @@ import { map }           from 'lodash/collection';
 
 const Post = ({ items }) => (
   <div>
-    <PieChartLikes
+    { __CLIENT__ && <PieChartLikes
       postsLikes={
         map(items,
           (post) => ([post.id, post.like])
         )
       }
-    />
-    <PieChart posts={items} />
+    /> }
+    { __CLIENT__ && <PieChart posts={items} /> }
   </div>
 );
 
