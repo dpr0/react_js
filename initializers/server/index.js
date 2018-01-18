@@ -7,20 +7,10 @@ require.extensions['.css'] = () => { return; };
 const host = 'localhost';
 const port = 3100;
 
-// new webpackDevServer(webpack(config), {
-//   hot: true,
-//   historyApiFallback: true,
-//   publicPath: config.output.publicPath,
-//   stats: {
-//     colors: true,
-//   }
-// }).listen(port, host, (err) => {
-//   if (err) console.log('[ERROR] => ${err}');
-//   console.log(`[SERVER] => ${host}:${port}`);
-// });
-
 var express = require('express');
 var application = express();
+const morgan = require('morgan');
+application.use(morgan('combined'));
 application.use(express.static('src/static'));
 application.set('views', __dirname);
 application.set('view engine', 'ejs');
