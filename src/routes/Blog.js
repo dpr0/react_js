@@ -1,4 +1,5 @@
 import MainLayout        from 'components/layouts/MainLayout';
+import initialLoad       from 'helpers/initialLoad';
 import AboutContainer    from 'containers/AboutContainer';
 import { fetchPosts }    from 'actions/Posts';
 import { fetchPost }     from 'actions/Post';
@@ -10,19 +11,22 @@ import PieChartContainer from 'containers/PieChartContainer';
 const Index = {
   path: rootPath(),
   component: PostsContainer,
-  prepareData: (store) => { store.dispatch(fetchPosts()); }
+  prepareData: (store) => {
+    if (initialLoad()) return;
+    return store.dispatch(fetchPosts());
+  }
 };
 
 const PieChartRoute = {
   path: pieChartPath(),
   component: PieChartContainer,
-  prepareData: (store) => { store.dispatch(fetchPosts()); }
+  prepareData: (store) => { return store.dispatch(fetchPosts()); }
 };
 
 const PostRoute = {
   path: postPath(),
   component: PostContainer,
-  prepareData: (store, query, params) => { store.dispatch(fetchPost(params.id)); }
+  prepareData: (store, query, params) => { return store.dispatch(fetchPost(params.id)); }
 };
 
 const About = {

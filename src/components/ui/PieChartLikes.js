@@ -1,16 +1,19 @@
 import React     from 'react';
-import c3        from 'c3';
+// import c3        from 'c3';
 import PropTypes from 'prop-types';
 
 class PieChartLikes extends React.Component {
   componentDidMount() {
-    this.pieChart = c3.generate({
-      bindto: this.refs.pieChart,
-      data: {
-        columns: this.props.postsLikes,
-        type : 'pie',
-      }
-    });
+    const c3 = require('c3');
+    if (__CLIENT__) {
+      this.pieChart = c3.generate({
+        bindto: this.refs.pieChart,
+        data: {
+          columns: this.props.postsLikes,
+          type : 'pie',
+        }
+      });
+    }
   }
 
   componentWillUnmount() {

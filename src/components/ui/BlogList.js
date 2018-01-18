@@ -43,7 +43,7 @@ const BlogList = ({ items, page, postsLength, likeFunc, pageClick }) => (
       </Grid.Column>
       <Grid.Column>
         <Segment basic>
-          <PieChart posts={items} />
+          { __CLIENT__ && <PieChart posts={items} /> }
         </Segment>
       </Grid.Column>
     </Grid>
