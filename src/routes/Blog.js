@@ -3,10 +3,11 @@ import initialLoad       from 'helpers/initialLoad';
 import AboutContainer    from 'containers/AboutContainer';
 import { fetchPosts }    from 'actions/Posts';
 import { fetchPost }     from 'actions/Post';
-import { postPath, rootPath, aboutPath, pieChartPath } from 'helpers/routes';
+import { postPath, rootPath, aboutPath, pieChartPath, contactsPath } from 'helpers/routes';
 import PostsContainer    from 'containers/PostsContainer';
 import PostContainer     from 'containers/PostContainer';
 import PieChartContainer from 'containers/PieChartContainer';
+import Contacts          from 'components/ui/Contacts';
 
 const Index = {
   path: rootPath(),
@@ -34,7 +35,12 @@ const About = {
   component: AboutContainer
 };
 
+const ContactsRoute = {
+  path: contactsPath(),
+  component: Contacts
+};
+
 export default {
   component: MainLayout,
-  childRoutes: [ Index, PostRoute, About, PieChartRoute ]
+  childRoutes: [ Index, PostRoute, About, PieChartRoute, ContactsRoute ]
 };
