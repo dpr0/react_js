@@ -1,22 +1,18 @@
 import React from 'react';
 import classNames from 'classnames';
 
-class Text extends React.Component {
-  render() {
-    const { label, name, fieldRef, error } = this.props;
-    return (
-      <div className={ classNames('ui field', { error }) }>
-        <label htmlFor={name}>{label}</label>
-        <input
-          type="text"
-          className="ui input"
-          id={name}
-          name={name}
-          ref={fieldRef}
-        />
-      </div>
-    );
-  }
-}
+const Text = ({ name, value, onChange, label, error }) => (
+  <div className={classNames('ui field', { error })}>
+    <label htmlFor={name}>{label}</label>
+    <input
+      id={name}
+      name={name}
+      type="text"
+      className="ui input"
+      value={value}
+      onChange={ onChange }
+    />
+  </div>
+);
 
 export default Text;

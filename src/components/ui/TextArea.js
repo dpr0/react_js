@@ -1,20 +1,21 @@
 import React from 'react';
 
-class Text extends React.Component {
+class TextArea extends React.Component {
   render() {
-    const { label, name, fieldRef } = this.props;
+    const { name, value, onChange, label } = this.props;
     return (
-      <div className="ui field">
+      <div className='ui field'>
         <label htmlFor={name}>{label}</label>
         <textarea
-          className="ui input"
           id={name}
           name={name}
-          ref={fieldRef}
+          className="ui input"
+          value={value}
+          onChange={ onChange }
         />
       </div>
     );
   }
 }
 
-export default Text;
+export default TextArea;

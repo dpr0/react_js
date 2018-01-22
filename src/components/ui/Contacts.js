@@ -1,5 +1,5 @@
 import React from 'react';
-import { assign, mapValues } from 'lodash/object';
+import { set, assign } from 'lodash/object';
 import Text from 'components/ui/Text';
 import TextArea from 'components/ui/TextArea';
 
@@ -7,52 +7,85 @@ class Contacts extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { errors: {} };
-    this.form = {};
-    this.onSubmit = this.onSubmit.bind(this);
-    this.generateRef = this.generateRef.bind(this);
+    this.state = {
+      form: {
+        values: {
+          fullName: '',
+          email: '',
+          message: ''
+        },
+        errors: {}
+      }
+    };
+    this.onSubmit    = this.onSubmit.bind(this);
+    this.changeField = this.changeField.bind(this);
+    this.clearError  = this.clearError.bind(this);
   }
 
   onSubmit(e) {
     e.preventDefault();
-    this.setState({ errors: {} });
-    const values = mapValues(this.form, 'value');
+    console.log(JSON.stringify(this.state.form.values));
+  }
 
-    if (!values.email || values.email.length < 3) {
-      this.setState(assign(
-        {},
-        this.state,
-        { errors: assign(this.state.errors, { email: true })}
-      ));
-    }
+  clearError(fieldName) {
+    this.setState(
+      set(
+        assign({}, this.state),
+        ['form', 'errors', fieldName],
+        false
+      )
+    );
+  }
 
-    console.log(JSON.stringify(values));
-  };
+  changeField(fieldName) {
+    return (e) => {
+      switch(fieldName) {
+        case 'email':
+          this.clearError('email');
+          if (e.target.value.length < 3)
+            this.setState(set(
+              assign({}, this.state),
+              'form.errors.email',
+              true
+            ));
+          break;
+      }
 
-  generateRef(fieldName) {
-    return (input) => { this.form[fieldName] = input; };
+      this.setState(
+        set(
+          assign({}, this.state),
+          ['form', 'values', fieldName],
+          e.target.value
+        )
+      );
+    };
   }
 
   render() {
+    const { fullName, email, message } = this.state.form.values;
     return (
       <div>
         <h1>Contacts</h1>
-        <form className="ui form" onSubmit={this.onSubmit} >
+        <form className="ui form" onSubmit={this.onSubmit}>
           <Text
-            label="Full name"
-            name="fullName"
-            fieldRef={ this.generateRef('fullName') }
+            name='fullName'
+            label='Full name'
+            value={fullName}
+            onChange={ this.changeField('fullName') }
           />
           <Text
-            label="Email"
-            name="email"
-            error={this.state.errors.email}
-            fieldRef={ this.generateRef('email') }
+            name='email'
+            label='Email'
+            value={email}
+            error={this.state.form.errors.email}
+            onChange={ this.changeField('email') }
           />
           <TextArea
-            label="Message"
-            name="message"
-            fieldRef={ this.generateRef('message') }
+            name='message'
+            label='Message'
+            value={message}
+            error={this.state.form.errors.email}
+            onChange={ this.changeField('message') }
           />
           <input
             className="ui button primary"
