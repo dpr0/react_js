@@ -54,26 +54,21 @@ const sleep = (values) => {
   });
 };
 
-const submit = (values) => {
-  console.log(JSON.stringify('======================='));
-  console.log(JSON.stringify(values));
-  new Promise(resolve => setTimeout(resolve, 5));
+const submitUpdateForm = (values, dispatch) => {
+  dispatch(updatePost(values));
 };
 
-export default connect(
-  (state) => ({
-    initialValues: {
-      title:     state.post.entry && state.post.entry.message,
-      author:    state.post.entry && state.post.entry.meta.author,
-      createdAt: state.post.entry && state.post.entry.meta.createdAt,
-    }
-  }),
-  (dispatch) => ({
-    updPost: (id, post) => (dispatch(updatePost(id, post)))
-  })
-)(reduxForm({
+const initialState = (state) => ({
+  initialValues: {
+    title:     state.post.entry && state.post.entry.message,
+    author:    state.post.entry && state.post.entry.meta.author,
+    createdAt: state.post.entry && state.post.entry.meta.createdAt,
+  }
+});
+
+export default connect(initialState)(reduxForm({
   form: 'editPost',
   validate,
   warn,
-  onSubmit: submit
+  onSubmit: submitUpdateForm
 })(EditPostView));
