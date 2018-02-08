@@ -15,7 +15,7 @@ export default function (state = initialState, action) {
     case types.FETCH_POST_ERROR:
       return assign({}, state, { error: true });
     case types.FETCH_POST_SUCCESS:
-      return assign({}, state, { entry: action.response });
+      return assign({}, state, { entry: action.response, loading: false, error: false });
     case likeTypes.LIKE_REQUEST:
       return assign({}, state, { loading: true });
     case likeTypes.LIKE_ERROR:

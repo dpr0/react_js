@@ -5,6 +5,7 @@ import { Button } from 'semantic-ui-react';
 const Like = ({ id, like, dislike, likeFunc }) => (
   <div>
     <Button
+      id={`like_button_${id}`}
       color='green'
       icon='thumbs outline up'
       onClick={() => likeFunc(id, 'like')}

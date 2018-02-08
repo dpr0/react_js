@@ -11,7 +11,7 @@ const BlogItem = ({ id, like, dislike, title, body, image, meta, likeFunc }) => 
   <Item.Group>
     <div className="ui raised link card">
       { id && <div className="content">
-        <Link to={postPath(id)}>{title}</Link>
+        <Link to={postPath(id)} id={`post_id_${id}`}>{title}</Link>
         <TextBox body={body} meta={meta} />
         <div className="description">
           <Image {...image} />
