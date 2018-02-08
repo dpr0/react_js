@@ -43,7 +43,7 @@ describe('BlogItem', () => {
 
   it('should render the title', () => {
     const item = shallow(<BlogItem {...itemProps} />);
-    const header = <Link to='/post/1'>React!</Link>;
+    const header = <Link to='/post/1' id='post_id_1' >React!</Link>;
     expect(item.contains(header)).equal(true);
   });
 

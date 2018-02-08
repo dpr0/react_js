@@ -17,7 +17,7 @@ const Logo = () => (
     <Header>
       <div className="ui attached stackable menu">
         <div className="ui container">
-          <Link className="item" to={ rootPath } >Home</Link>
+          <Link className="item" to={ rootPath } id='root'>Home</Link>
           <Link className="item" to={ pieChartPath } >Chart</Link>
           <Link className="item" to={ aboutPath } >About</Link>
           <div className="ui simple dropdown item">
